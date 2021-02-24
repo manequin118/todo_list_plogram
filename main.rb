@@ -11,7 +11,7 @@ class Task
   end
 
   def info
-    "[No.#{@id}] #{title}:#{content}"
+    "[No.#{@id}] #{@title}:#{@content}"
   end
 end
 
@@ -38,10 +38,13 @@ class ToDo < Task
     puts "=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*"
   end
 
-  def delete
-    if @tasks.id == nil
-      puts "該当のタスクが存在しません。"
+  def delete(id:)
+    input_id = @tasks.find { |task| task.id == id }
+    if input_id.nil?
+      puts "該当idのタスクが存在しません。"
     else
+      @tasks.delete(input_id)
+      puts "【削除】#{input_id.info}"
     end
   end
 end
@@ -53,4 +56,8 @@ task3 = Task.new(title: "買物", content: "卵, ヨーグルト")
 todo = ToDo.new
 todo.add(task1)
 todo.add(task2)
+todo.info
+todo.delete(id: 2)
+todo.add(task3)
+todo.delete(id: 5)
 todo.info
