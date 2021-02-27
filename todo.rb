@@ -25,12 +25,12 @@ class ToDo
   end
 
   def delete(id:)
-    input_id = @tasks.find { |task| task.id == id }
-    if input_id.nil?
+    input_tasks = @tasks.find { |task| task.id == id }
+    if input_tasks.nil?
       puts "該当idのタスクが存在しません。"
     else
-      @tasks.delete(input_id)
-      puts "【削除】#{input_id.info}"
+      @tasks.delete(input_tasks)
+      puts "【削除】#{input_tasks.info}"
     end
   end
 end

@@ -1,7 +1,7 @@
 class Task
   # コードを追加
+  attr_reader :title, :content, :id
   @@count = 0
-  attr_accessor :title, :content, :id
 
   def initialize(title:, content:)
     @title = title
